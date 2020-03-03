@@ -6,7 +6,11 @@ class Abs : public Decorator {
 	public:
 		Abs(Base* value) : Decorator() { this->value = value; }
 	 	virtual double evaluate() { abs(value->evaluate()); }
-		virtual string stringify() {}
+		virtual std::string stringify() {}
+		virtual Iterator* create_iterator() { return new UnaryIterator(this);}
+		virtual Base* get_left() { return A;}
+		virtual Base* get_right() { return B;}
+
 	private:
 		Base* value;
 };

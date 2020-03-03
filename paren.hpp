@@ -5,8 +5,11 @@
 class Paren : public Decorator {
 	public:
 		Paren(Base* value) : Decorator() { this->value = value; }
-		virtual string stringify() { return "(" + value->stringify() + ")"; }
+		virtual std::string stringify() { return "(" + value->stringify() + ")"; }
 		virtual double evaluate() { }
+		virtual Iterator* create_iterator() { return new UnaryIterator(this); }
+		virtual Iterator* get_left() { return value; }
+		virtual Iterator* get_right() { return value;} 
 	private:
 		Base* value;
 };
