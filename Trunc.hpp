@@ -6,13 +6,13 @@ class Trunc : public Decorator{
 	public:
 		Trunc(Base* value) : Decorator() { this->value = value; }
 		virtual double evaluate() {};	
-		virtual string stringify(){
+		virtual std::string stringify(){
 			int num = trunc(value->evaluate());
 			return to_string(num);
 		}	
-		Iterator* create_iterator() { return new UnaryIterator(this); }
-		Iterator* get_left() { return value; }
-		Iterator* get_right() { return nullptr; }
+		virtual Iterator* create_iterator() { return new UnaryIterator(this); }
+		virtual Iterator* get_left() { return value; }
+		virtual Iterator* get_right() { return nullptr; }
 
 	protected:
 		Base* value;

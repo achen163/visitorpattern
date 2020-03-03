@@ -9,10 +9,10 @@ class Ceil : public Decorator {
 		virtual double  evaluate() {
 			return ceil(value->evaluate());
 		}	
-		virtual string stringify() { }
-		Iterator* create_iterator() { return new UnaryIterator(new Ceil(this); }
-		Iterator* get_left() { return value; }
-		Iterator* get_right() { return nullptr; }
+		virtual std::string stringify() { }
+		virtual Iterator* create_iterator() { return new UnaryIterator(new Ceil(this); }
+		virtual Iterator* get_left() { return value; }
+		virtual Iterator* get_right() { return nullptr; }
 	private:
 		Base* value;
 };
