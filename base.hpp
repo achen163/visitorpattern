@@ -4,7 +4,7 @@
 #include <string>
 #include "iterator.hpp"
 
-using namespace std;
+//using namespace std;
 
 class Iterator;
 
