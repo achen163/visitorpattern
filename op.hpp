@@ -8,7 +8,7 @@ class Op : public Base {
         Op(double value) : Base() {this->value = value; }
         virtual double evaluate() { return value; }
         virtual std::string stringify() { return to_string(value); }
-	Iterator* create_iterator() { return new NullIterator(new Op(value)); }
+	Iterator* create_iterator() { return new NullIterator(new Op(this); }
 	Base* get_left() { return nullptr; }
 	Base* get_right() { return nullptr; }
     private:

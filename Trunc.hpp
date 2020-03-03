@@ -10,7 +10,7 @@ class Trunc : public Decorator{
 			int num = trunc(value->evaluate());
 			return to_string(num);
 		}	
-		Iterator* create_iterator() { return new UnaryIterator(new Trunc(value)); }
+		Iterator* create_iterator() { return new UnaryIterator(this); }
 		Iterator* get_left() { return value; }
 		Iterator* get_right() { return nullptr; }
 

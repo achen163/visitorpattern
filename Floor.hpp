@@ -11,9 +11,9 @@ class Floor : public Decorator {
 
 		}
 		virtual string stringify() { };
-		Iterator* create_iterator() { return new UnaryIterator(new Floor(value)); }
+		Iterator* create_iterator() { return new UnaryIterator(this); }
 		Iterator* get_left() { return value; }
-		Iterator* get_right() { return value; }
+		Iterator* get_right() { return nullptr;  }
 private:
 	Base* value;
 	
