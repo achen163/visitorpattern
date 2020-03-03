@@ -10,7 +10,7 @@ class Div: public Base {
 		Div(Base* A,Base* B) {this->A = A; this->B = B;}	
 		virtual double evaluate() {return( A->evaluate() / B->evaluate());}
 		virtual string stringify() {return (A->stringify() + " / " + B->stringify());}
-		Iterator* create_iterator() {return new BinaryIterator(new Div(A,B); }
+		Iterator* create_iterator() {return new BinaryIterator(this) }
 	Base* get_left() {return A;}
 	Base* get_right() {return B;}
 	private:
