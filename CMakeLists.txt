@@ -12,6 +12,9 @@ ADD_EXECUTABLE(iterator
 )
 ADD_EXECUTABLE(test
         unit_test.cpp
+	binary_iterator.cpp
+	unary_iterator.cpp
+	preorder_iterator.cpp
 )
 
 SET(DEBUG_FLAG "-g")
