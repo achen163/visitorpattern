@@ -12,7 +12,7 @@ class Container {
         /* Constructors */
         Container() : sort_function(nullptr) { };
         Container(Sort* function) : sort_function(function) { };
-
+	
         /* Non Virtual Functions */
         void set_sort_function(Sort* sort_function); // set the type of sorting algorithm
 
@@ -31,6 +31,7 @@ class Container {
         virtual Base* at(int i) = 0;
         // return container size
         virtual int size() = 0;
+
 };
 
 #endif //__CONTAINER_HPP__

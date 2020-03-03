@@ -9,10 +9,10 @@ class Trunc : public Decorator{
 		virtual string stringify(){
 			int num = trunc(value->evaluate());
 			return to_string(num);
-			
-
 		}	
-
+		Iterator* create_iterator() { return new UnaryIterator(new Trunc(value)); }
+		Iterator* get_left() { return value; }
+		Iterator* get_right() { return nullptr; }
 
 	protected:
 		Base* value;

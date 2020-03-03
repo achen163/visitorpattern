@@ -37,7 +37,6 @@ class VectorContainer: public Container {
 		} 
 		virtual Base* at(int i) { return vcontainer.at(i);  }
 		virtual int size() { return vcontainer.size(); }
-		
 	private:
 		vector<Base*> vcontainer;
 };
