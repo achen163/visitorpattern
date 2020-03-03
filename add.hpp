@@ -10,9 +10,9 @@ class Add : public Base {
 		Iterator* create_iterator() {
 			 return new BinaryIterator(this);
 		}
-		Base* get_left() { return A; }
-		Base* get_right() { return B; }
-		virtual string stringify() { return A->stringify() +  "+" +  B->stringify(); }
+		virtual Base* get_left() { return A; }
+		virtual Base* get_right() { return B; }
+		virtual std::string stringify() { return A->stringify() +  "+" +  B->stringify(); }
 	private:
 		Base* A; Base* B;
 };
