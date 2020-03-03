@@ -7,7 +7,7 @@ class Add : public Base {
 	public:
 		Add(Base* A, Base* B) : Base() { this->A = A; this->B = B; }
 		virtual double evaluate() { return A->evaluate() + B->evaluate(); }
-		Iterator* create_iterator() {
+		virtual Iterator* create_iterator() {
 			 return new BinaryIterator(this);
 		}
 		virtual Base* get_left() { return A; }
