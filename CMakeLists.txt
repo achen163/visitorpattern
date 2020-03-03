@@ -4,7 +4,7 @@ ADD_SUBDIRECTORY(googletest)
 
 SET(CMAKE_CXX_STANDARD 11)
 
-ADD_EXECUTABLE(iterator
+ADD_EXECUTABLE(lab
 	main.cpp
 	binary_iterator.cpp
 	unary_iterator.cpp

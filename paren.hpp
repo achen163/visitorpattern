@@ -9,7 +9,7 @@ class Paren : public Decorator {
 		virtual double evaluate() { }
 		virtual Iterator* create_iterator() { return new UnaryIterator(this); }
 		virtual Iterator* get_left() { return value; }
-		virtual Iterator* get_right() { return value;} 
+		virtual Iterator* get_right() { return nullptr; } 
 	private:
 		Base* value;
 };

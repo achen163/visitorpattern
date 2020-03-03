@@ -11,8 +11,8 @@ class Trunc : public Decorator{
 			return to_string(num);
 		}	
 		virtual Iterator* create_iterator() { return new UnaryIterator(this); }
-		virtual Iterator* get_left() { return value; }
-		virtual Iterator* get_right() { return nullptr; }
+		virtual Base* get_left() { return value; }
+		virtual Base* get_right() { return nullptr; }
 
 	protected:
 		Base* value;
