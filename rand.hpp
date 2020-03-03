@@ -12,7 +12,9 @@ class Rand : public Base {
 		Rand(){ this->randnum = rand()%100;}
 		virtual double evaluate()  { return randnum; }
 		virtual string stringify() { return to_string(randnum); }
-		Iterator* create_iterator() { }              
+		Iterator* create_iterator() {return NullIterator(new Rand(randnum); }              
+		Base* get_left() {return A;}
+		Base* get_right() {return B;}
 	private:
 	double	randnum;
 
