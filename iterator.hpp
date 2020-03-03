@@ -70,7 +70,7 @@ class PreorderIterator : public Iterator {
         std::stack<Iterator*> iterators;
 
     public:
-        PreorderIterator(Base* ptr);
+        oPreorderIterator(Base* ptr);
 
         void first();
         void next();
