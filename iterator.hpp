@@ -3,8 +3,8 @@
 
 #include <stack>
 
-#include "../lab03/base.hpp"
-#include "../lab04/container.hpp"
+#include "base.hpp"
+//#include "../lab04/container.hpp"
 
 class Base;
 
@@ -70,7 +70,7 @@ class PreorderIterator : public Iterator {
         std::stack<Iterator*> iterators;
 
     public:
-        oPreorderIterator(Base* ptr);
+        PreorderIterator(Base* ptr);
 
         void first();
         void next();
