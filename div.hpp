@@ -15,7 +15,7 @@ class Div: public Base {
 		virtual Base* get_right() {return B;}
 	
 		void accept(CountVisitor* cv) {
-			cv->visit_ceil();
+			cv->visit_div();
 		}
 	private:
 		
