@@ -10,9 +10,13 @@ class Div: public Base {
 		Div(Base* A,Base* B) {this->A = A; this->B = B;}	
 		virtual double evaluate() {return( A->evaluate() / B->evaluate());}
 		virtual std::string stringify() {return (A->stringify() + " / " + B->stringify());}
-		virtual Iterator* create_iterator() {return new BinaryIterator(this) }
+		virtual Iterator* create_iterator() {return new BinaryIterator(this); }
 		virtual Base* get_left() {return A;}
 		virtual Base* get_right() {return B;}
+	
+		void accept(CountVisitor* cv) {
+			cv->visit_ceil();
+		}
 	private:
 		
 		Base* A; Base* B;

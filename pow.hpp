@@ -12,6 +12,10 @@ class Pow : public Base {
 		virtual Iterator* create_iterator() { return new BinaryIterator(this); }
 		virtual Base* get_left() {return A;}
 		virtual Base* get_right() {return B;}
+
+		void accept(CountVisitor* cv) {
+			cv->visit_pow();
+		}
 	private:
 		Base* A; Base* B;
 };

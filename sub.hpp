@@ -14,6 +14,9 @@ class Sub : public Base {
 		virtual Base* get_left() {return A;}
 		virtual Base* get_right() {return B;}
 
+		void accept(CountVisitor* cv) {
+			cv->visit_sub();
+		}
 	private:
 		Base* A;
 		Base* B;

@@ -11,6 +11,9 @@ class Abs : public Decorator {
 		virtual Base* get_left() { return A;}
 		virtual Base* get_right() { return nullptr; }
 
+		void accept(CountVisitor* cv) {
+			cv->visit_abs();
+		}
 	private:
 		Base* value;
 };

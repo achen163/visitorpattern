@@ -14,6 +14,10 @@ class Floor : public Decorator {
 		Iterator* create_iterator() { return new UnaryIterator(this); }
 		virtual Base* get_left() { return value; }
 		virtual Base* get_right() { return nullptr;  }
+	
+		void accept(CountVisitor* cv) {
+			cv->visit_floor();
+		}
 private:
 	Base* value;
 	

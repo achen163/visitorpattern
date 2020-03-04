@@ -14,6 +14,9 @@ class Trunc : public Decorator{
 		virtual Base* get_left() { return value; }
 		virtual Base* get_right() { return nullptr; }
 
+		void accept(CountVisitor* cv) {
+			cv->visit_trunc();
+		}	
 	protected:
 		Base* value;
 	

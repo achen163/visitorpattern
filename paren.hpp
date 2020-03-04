@@ -8,8 +8,12 @@ class Paren : public Decorator {
 		virtual std::string stringify() { return "(" + value->stringify() + ")"; }
 		virtual double evaluate() { }
 		virtual Iterator* create_iterator() { return new UnaryIterator(this); }
-		virtual Iterator* get_left() { return value; }
-		virtual Iterator* get_right() { return nullptr; } 
+		virtual Base* get_left() { return value; }
+		virtual Base* get_right() { return nullptr; } 
+	
+		void accept(CountVisitor* cv) {
+			cv->visit_paren();
+		}
 	private:
 		Base* value;
 };

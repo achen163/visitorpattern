@@ -9,6 +9,8 @@ ADD_EXECUTABLE(lab
 	binary_iterator.cpp
 	unary_iterator.cpp
 	preorder_iterator.cpp
+	factory.cpp
+	
 )
 ADD_EXECUTABLE(test
         unit_test.cpp

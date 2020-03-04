@@ -13,6 +13,10 @@ class Add : public Base {
 		virtual Base* get_left() { return A; }
 		virtual Base* get_right() { return B; }
 		virtual std::string stringify() { return A->stringify() +  "+" +  B->stringify(); }
+		
+		void accept(CountVisitor* cv) {
+			cv->visit_add();
+		}
 	private:
 		Base* A; Base* B;
 };
