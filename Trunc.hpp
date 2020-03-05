@@ -17,7 +17,7 @@ class Trunc : public Decorator{
 		void accept(CountVisitor* cv) {
 			cv->visit_trunc();
 		}	
-	protected:
+	private:
 		Base* value;
 	
 

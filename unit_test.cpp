@@ -11,6 +11,8 @@
 #include "abs.hpp"
 #include "Floor.hpp"
 #include "paren.hpp"
+#include "rand.hpp"
+#include "ceil.hpp"
 #include "visitor.hpp"
 int main(int argc, char **argv) {
    ::testing::InitGoogleTest(&argc, argv);
@@ -155,13 +157,19 @@ TEST(VisitorCountTest3, TestVisitor) {
 	Base* negTwo = new Op(-2.5);
 	Base* posThree2 = new Op(3);
 	Base* mult23 = new Mult(negTwo,posThree2);
-	Decorator* abs2 = new Abs(mult23);
-	Decorator* floor = new Floor(abs2);
-	Base* trunc = new Trunc(abs2);
+	Base* abs2 = new Abs(mult23);
+	Base* floor = new Floor(abs2);
+	Base* trunc = new Trunc(floor);
 	Base* paren4 = new Paren(trunc);
-	
-	Iterator* countTest = new PreorderIterator(trunc);
+	Base* paren5 = new Paren(paren4);
+
+	Iterator* countTest = new PreorderIterator(paren5);
+
 	countTest->first();
+	countTest->current()->accept(visitor);
+	EXPECT_EQ(visitor->paren_count(), 1);
+
+	countTest->next();
 	countTest->current()->accept(visitor);
 	EXPECT_EQ(visitor->trunc_count(),1);
 	
@@ -172,8 +180,24 @@ TEST(VisitorCountTest3, TestVisitor) {
 	countTest->next();
 	countTest->current()->accept(visitor);
 	EXPECT_EQ(visitor->abs_count(),1);
-	
-	
-	
 
 }
+
+TEST(VisitorCountTest4, TestVisitor) {
+	CountVisitor* visitor = new CountVisitor();
+	
+	Base* random = new Rand();
+	
+	Base* ceil = new Ceil(random);
+	Base* paren = new Paren(ceil); //dummynode
+	Iterator* countTest = new PreorderIterator(paren);
+	
+	countTest->first();
+	countTest->current()->accept(visitor);
+	EXPECT_EQ(visitor->ceil_count(), 1);
+	
+	countTest->next();
+	countTest->current()->accept(visitor);
+	EXPECT_EQ(visitor->rand_count(), 1);
+}
+	

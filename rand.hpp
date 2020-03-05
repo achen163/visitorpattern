@@ -12,7 +12,7 @@ class Rand : public Base {
 		Rand(){ this->randnum = rand()%100;}
 		virtual double evaluate()  { return randnum; }
 		virtual std::string stringify() { return to_string(randnum); }
-		virtual Iterator* create_iterator() {return NullIterator(this); }              
+		virtual Iterator* create_iterator() {return new NullIterator(this); }              
 		virtual Base* get_left() {return nullptr;}
 		virtual Base* get_right() {return nullptr;}
 		
