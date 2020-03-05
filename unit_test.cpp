@@ -2,9 +2,13 @@
 #include "iterator.hpp"
 #include "op.hpp"
 #include "add.hpp"
+#include "pow.hpp"
 #include "decorator.hpp"
 #include "mult.hpp"
+#include "div.hpp"
 #include "sub.hpp"
+#include "Trunc.hpp"
+#include "abs.hpp"
 #include "Floor.hpp"
 #include "paren.hpp"
 #include "visitor.hpp"
@@ -112,4 +116,64 @@ TEST(VisitorCountTest, TestVisitor) {
 
 }	
 
+TEST(VisitorCountTest2, TestVisitor){
+	CountVisitor* visitor = new CountVisitor();
 
+	Base* two3 = new Op(2);
+	Base* six3 = new Op(6);
+	Base* add2 = new Add(two3, six3);
+	Base* div2 = new Div(add2, two3);
+	Base* pow = new Pow(two3,div2);
+	Base* paren3 = new Paren(pow);	
+	
+	Iterator* countTest = new PreorderIterator(paren3);
+	
+	countTest->first();
+	EXPECT_EQ(countTest->current(), pow);
+	
+	countTest->next();
+	countTest->next();	
+	countTest->current()->accept(visitor);
+	EXPECT_EQ(visitor->div_count(),1);
+	
+	countTest->next();
+	countTest->current()->accept(visitor);
+	EXPECT_EQ(visitor->add_count(),1);
+	
+	countTest->next();
+	countTest->current()->accept(visitor);
+	countTest->next();
+	countTest->current()->accept(visitor);
+	countTest->next();
+	countTest->current()->accept(visitor);
+	EXPECT_EQ(visitor->op_count(),3);
+}
+
+TEST(VisitorCountTest3, TestVisitor) {
+	CountVisitor* visitor = new CountVisitor();
+
+	Base* negTwo = new Op(-2.5);
+	Base* posThree2 = new Op(3);
+	Base* mult23 = new Mult(negTwo,posThree2);
+	Decorator* abs2 = new Abs(mult23);
+	Decorator* floor = new Floor(abs2);
+	Base* trunc = new Trunc(abs2);
+	Base* paren4 = new Paren(trunc);
+	
+	Iterator* countTest = new PreorderIterator(trunc);
+	countTest->first();
+	countTest->current()->accept(visitor);
+	EXPECT_EQ(visitor->trunc_count(),1);
+	
+	countTest->next();
+	countTest->current()->accept(visitor);
+	EXPECT_EQ(visitor->floor_count(),1);
+	
+	countTest->next();
+	countTest->current()->accept(visitor);
+	EXPECT_EQ(visitor->abs_count(),1);
+	
+	
+	
+
+}

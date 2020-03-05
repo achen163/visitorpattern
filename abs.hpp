@@ -8,7 +8,7 @@ class Abs : public Decorator {
 	 	virtual double evaluate() { abs(value->evaluate()); }
 		virtual std::string stringify() {}
 		virtual Iterator* create_iterator() { return new UnaryIterator(this);}
-		virtual Base* get_left() { return A;}
+		virtual Base* get_left() { return value;}
 		virtual Base* get_right() { return nullptr; }
 
 		void accept(CountVisitor* cv) {
